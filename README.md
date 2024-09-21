@@ -2,7 +2,7 @@
 
 ## About This Project
 
-This project was developed as part of the [C++ Fundamentals: Game Programming For Beginners](https://www.udemy.com/course/cpp-fundamentals/) course by GameDev.tv and [Stephen Ulibarri](https://www.udemy.com/user/stephen-ulibarri-3/).
+This project was developed as part of the [C++ Fundamentals: Game Programming For Beginners](https://www.udemy.com/course/cpp-fundamentals/) course by [GameDev.tv](https://www.gamedev.tv/) and [Stephen Ulibarri](https://www.udemy.com/user/stephen-ulibarri-3/).
 
 The original tutorial project can be found [here](https://gitlab.com/GameDevTV/CPPCourse/top-down-section).
 
@@ -13,5 +13,5 @@ The original tutorial project can be found [here](https://gitlab.com/GameDevTV/C
 
 ## Acknowledgments
 
-- Special thanks to GameDev.tv and [Stephen Ulibarri](https://www.udemy.com/user/stephen-ulibarri-3/) for the excellent course.
+- Special thanks to [GameDev.tv](https://www.gamedev.tv/) and [Stephen Ulibarri](https://www.udemy.com/user/stephen-ulibarri-3/) for the excellent course.
 - Thanks to [LimeZu](https://limezu.itch.io/) and [Stealthix](https://stealthix.itch.io/) for providing the amazing tilesets.
