@@ -6,7 +6,7 @@
 .vscode/launch.json
 .vscode/extensions.json
 .vscode/*.code-workspace
-
+.vs
 # User-specific files
 *.rsuser
 *.suo
