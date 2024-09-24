@@ -131,17 +131,5 @@ After successfully building the project:
 
 ---
 
-- **Future Development**
-
-  If you plan to expand the game, consider adding a section:
-
-  ```markdown
-  ## Future Development (MAYBE!)
-
-  - **New Enemies**: Introduce more enemy types with unique behaviors.
-  - **Weapons and Abilities**: Add ranged weapons or special abilities.
-  - **Levels and Environments**: Create additional levels with different themes.
-  - **Story Elements**: Implement a storyline or quests to enhance engagement.
-  ```
 
 
