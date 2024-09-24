@@ -68,24 +68,12 @@ The original tutorial project can be found [here](https://gitlab.com/GameDevTV/C
    cd Killerman2035
    ```
 
-4. **Build the Project**
-
-   - **Using Visual Studio:**
+4. **Build the Project Using Visual Studio**
 
      - Open the solution file `Killerman2035.sln` in Visual Studio.
      - Ensure Raylib is correctly linked in your project settings.
      - Build the solution (`Build -> Build Solution`).
 
-   - **Using Command Line:**
-
-     - Open the Developer Command Prompt for Visual Studio.
-     - Compile the source files:
-
-       ```bash
-       cl /EHsc /FeKillerman2035.exe main.cpp /I path\to\raylib\include path\to\raylib\lib\raylib.lib
-       ```
-
-       - Replace `path\to\raylib` with the actual path where Raylib is installed.
 
 5. **Run the Game**
 
