@@ -13,6 +13,12 @@ int main()
 		Vector2 mapPosition = { 0.0f, 0.0f };
 
 		float speed = 4.0f;
+		float scale = 4.0f;
+		Texture2D knight = LoadTexture("characters/knight_idle_spritesheet.png");
+		Vector2 knightPosition = {
+			static_cast<float>(windowDimensions[0]) / 2.0f - scale * (0.5f * static_cast<float>(knight.width) / 6.0f),
+			static_cast<float>(windowDimensions[1]) / 2.0f - scale * (0.5f * static_cast<float>(knight.height) / 8.0f)
+		};
 
 		// Main game loop
 		while (!WindowShouldClose())
@@ -27,17 +33,22 @@ int main()
 			if (IsKeyDown(KEY_S)) direction.y += 1.0f;
 			if (Vector2Length(direction) != 0.0f)
 			{
-
 				mapPosition = Vector2Subtract(mapPosition, Vector2Scale(Vector2Normalize(direction), speed));
-				
-				
 			}
 
-			DrawTextureEx (map, mapPosition, 0, 4.0, WHITE);
+			// Draw the map
+			DrawTextureEx (map, mapPosition, 0, scale, WHITE);
+
+			// Draw the knight
+			Rectangle source{ 0.f, 0.f, static_cast<float>(knight.width) / 6.f, static_cast<float>(knight.height) };
+			Rectangle dest{ knightPosition.x, knightPosition.y, scale * static_cast<float>(knight.width) / 6.f, scale * static_cast<float>(knight.height) };
+			DrawTexturePro(knight, source, dest, Vector2{}, 0.f, WHITE);
+
 			EndDrawing();
 		}
 			
 		UnloadTexture(map);
+		UnloadTexture(knight);
 		CloseWindow();
 
 }
