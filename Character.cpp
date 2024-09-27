@@ -18,6 +18,11 @@ Character::~Character() {
 	UnloadTexture(run);
 }
 
+void Character::undoMovement()
+{
+	worldPos = worldPosLastFrame;
+}
+
 
 void Character::setScreenPos(const int window_dimensions[2])
 {
@@ -30,6 +35,7 @@ void Character::setScreenPos(const int window_dimensions[2])
 
 void Character::tick(float deltaTime)
 {
+	worldPosLastFrame = worldPos;
 	Vector2 direction{};
 	if (IsKeyDown(KEY_A)) direction.x -= 1.0f;
 	if (IsKeyDown(KEY_D)) direction.x += 1.0f;

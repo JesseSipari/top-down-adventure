@@ -9,6 +9,7 @@ public:
 	Vector2 getWorldPos() const { return worldPos; }
 	void setScreenPos(const int window_dimensions[2]);
 	void tick(float deltaTime);
+	void undoMovement();
 
 private:
 	Texture2D texture;
@@ -16,6 +17,7 @@ private:
 	Texture2D run;
 	Vector2 screenPos{};
 	Vector2 worldPos{};
+	Vector2 worldPosLastFrame{};
 	// 1 = facing right, -1 = facing left
 	float rightLeft{ 1.f };
 	// animation variables
