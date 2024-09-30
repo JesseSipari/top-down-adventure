@@ -1,11 +1,11 @@
-#include "Character.h"
+#include "character.h"
 #include <raymath.h>
 
 
 Character::Character(const int window_dimensions[])
-	:texture(LoadTexture("characters/knight_idle_spritesheet.png")),
-	idle(LoadTexture("characters/knight_idle_spritesheet.png")),
-	run(LoadTexture("characters/knight_run_spritesheet.png"))
+	:texture(LoadTexture("assets/characters/knight_idle_spritesheet.png")),
+	idle(LoadTexture("assets/characters/knight_idle_spritesheet.png")),
+	run(LoadTexture("assets/characters/knight_run_spritesheet.png"))
 {
 	width = texture.width / static_cast<float>(maxFrames);
 	height = texture.height;
