@@ -1,6 +1,6 @@
 #include <raylib.h>
 #include <raymath.h>
-#include "character.h"
+#include "Character.h"
 
 int main()
 {
@@ -9,7 +9,7 @@ int main()
     SetTargetFPS(60);
 
     // Load the map texture
-    Texture2D map = LoadTexture("assets/nature_tileset/Map1_1.png");
+    Texture2D map = LoadTexture("nature_tileset/Map1_1.png");
     Vector2 mapPosition = {0.0f, 0.0f};
     const float mapScale{ 4.0f };
     Character knight(windowDimensions);
