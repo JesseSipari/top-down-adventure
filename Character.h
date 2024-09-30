@@ -4,10 +4,9 @@
 class Character
 {
 public:
-	Character();
+	Character(const int window_dimensions[]);
 	~Character();
 	Vector2 getWorldPos() const { return worldPos; }
-	void setScreenPos(const int window_dimensions[2]);
 	void tick(float deltaTime);
 	void undoMovement();
 
@@ -26,7 +25,7 @@ private:
 	int maxFrames{ 6 };
 	float updateTime{ 1.f / 12.f };
 	float speed{ 4.f };
-	float scale{ 4.f };
+	float scale{ 4.0f };
 	float width{};
 	float height{};
 };

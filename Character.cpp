@@ -2,13 +2,16 @@
 #include <raymath.h>
 
 
-Character::Character()
+Character::Character(const int window_dimensions[])
 	:texture(LoadTexture("characters/knight_idle_spritesheet.png")),
 	idle(LoadTexture("characters/knight_idle_spritesheet.png")),
 	run(LoadTexture("characters/knight_run_spritesheet.png"))
 {
 	width = texture.width / static_cast<float>(maxFrames);
 	height = texture.height;
+	screenPos = { static_cast<float>(window_dimensions[0]) / 2.0f - scale * (0.5f * width),
+					static_cast<float>(window_dimensions[1]) / 2.0f - scale * (0.5f * height) };
+
 }
 	
 
@@ -23,15 +26,6 @@ void Character::undoMovement()
 	worldPos = worldPosLastFrame;
 }
 
-
-void Character::setScreenPos(const int window_dimensions[2])
-{
-	screenPos = {
-		static_cast<float>(window_dimensions[0]) / 2.0f - scale * (0.5f * width),
-		static_cast<float>(window_dimensions[1]) / 2.0f - scale * (0.5f * height)
-
-	};
-}
 
 void Character::tick(float deltaTime)
 {
