@@ -2,6 +2,7 @@
 #include <raymath.h>
 
 
+
 Character::Character(const int window_dimensions[])
 	:texture(LoadTexture("assets/characters/knight_idle_spritesheet.png")),
 	idle(LoadTexture("assets/characters/knight_idle_spritesheet.png")),
@@ -13,7 +14,6 @@ Character::Character(const int window_dimensions[])
 					static_cast<float>(window_dimensions[1]) / 2.0f - scale * (0.5f * height) };
 
 }
-	
 
 Character::~Character() {
 	UnloadTexture(texture);
@@ -26,7 +26,6 @@ void Character::undoMovement()
 	worldPos = worldPosLastFrame;
 }
 
-
 void Character::tick(float deltaTime)
 {
 	worldPosLastFrame = worldPos;
@@ -36,7 +35,6 @@ void Character::tick(float deltaTime)
 	if (IsKeyDown(KEY_W)) direction.y -= 1.0f;
 	if (IsKeyDown(KEY_S)) direction.y += 1.0f;
 	if (Vector2Length(direction) != 0.0f)
-
 
 	{
 		// set worldPos = worldPos + direction
@@ -59,7 +57,6 @@ void Character::tick(float deltaTime)
 	}
 
 	// Draw the knight
-
 	Rectangle source{frame * width, 0.f, rightLeft * width, height};
 	Rectangle dest{screenPos.x, screenPos.y, scale * width, scale * height};
 	DrawTexturePro(texture, source, dest, Vector2{}, 0.f, WHITE);

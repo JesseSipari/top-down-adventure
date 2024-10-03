@@ -130,9 +130,11 @@
   <ItemGroup>
     <ClCompile Include="src\Character.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Prop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
+    <ClInclude Include="include\Prop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
