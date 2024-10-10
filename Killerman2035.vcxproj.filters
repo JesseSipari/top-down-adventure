@@ -26,10 +26,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h">
+    <ClInclude Include="include\Prop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Prop.h">
+    <ClInclude Include="include\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
