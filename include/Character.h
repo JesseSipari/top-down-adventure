@@ -9,6 +9,7 @@ public:
 	Vector2 getWorldPos() const { return worldPos; }
 	void tick(float deltaTime);
 	void undoMovement();
+	Rectangle getCollisionRec();
 
 private:
 	Texture2D texture;
