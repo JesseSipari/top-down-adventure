@@ -4,10 +4,11 @@
 
 
 Character::Character(const int window_dimensions[])
-	:texture(LoadTexture("assets/characters/knight_idle_spritesheet.png")),
-	idle(LoadTexture("assets/characters/knight_idle_spritesheet.png")),
-	run(LoadTexture("assets/characters/knight_run_spritesheet.png"))
 {
+	texture = LoadTexture("assets/characters/knight_idle_spritesheet.png");
+	idle = LoadTexture("assets/characters/knight_idle_spritesheet.png");
+	run = LoadTexture("assets/characters/knight_run_spritesheet.png");
+
 	width = texture.width / static_cast<float>(maxFrames);
 	height = texture.height;
 	screenPos = { static_cast<float>(window_dimensions[0]) / 2.0f - scale * (0.5f * width),
@@ -21,14 +22,11 @@ Character::~Character() {
 	UnloadTexture(run);
 }
 
-void Character::undoMovement()
-{
-	worldPos = worldPosLastFrame;
-}
 
 void Character::tick(float deltaTime)
 {
-	worldPosLastFrame = worldPos;
+	BaseCharacter::tick(deltaTime);
+
 	Vector2 direction{};
 	if (IsKeyDown(KEY_A)) direction.x -= 1.0f;
 	if (IsKeyDown(KEY_D)) direction.x += 1.0f;
@@ -47,29 +45,6 @@ void Character::tick(float deltaTime)
 		texture = idle;
 	}
 
-	// Update animation frame
-	runningTime += deltaTime;
-	if (runningTime >= updateTime)
-	{
-		frame++;
-		runningTime = 0.f;
-		if (frame > maxFrames) frame = 0;
-	}
 
-	// Draw the knight
-	Rectangle source{frame * width, 0.f, rightLeft * width, height};
-	Rectangle dest{screenPos.x, screenPos.y, scale * width, scale * height};
-	DrawTexturePro(texture, source, dest, Vector2{}, 0.f, WHITE);
 }
 
-Rectangle Character::getCollisionRec()
-{
-
-	return Rectangle{
-		screenPos.x,
-		screenPos.y,
-		width * scale,
-		height * scale
-	};
-	
-}

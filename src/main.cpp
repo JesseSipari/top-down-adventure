@@ -1,7 +1,10 @@
 #include <raylib.h>
 #include <raymath.h>
+
+#include "BaseCharacter.h"
 #include "character.h"
 #include "Prop.h"
+#include "Enemy.h"
 
 int main()
 {
@@ -12,7 +15,12 @@ int main()
     Texture2D map = LoadTexture("assets/nature_tileset/Map1_1.png");
     Vector2 mapPosition = {0.0f, 0.0f};
     const float mapScale{ 4.0f };
+
     Character knight(windowDimensions);
+
+    Enemy goblin(Vector2{}, LoadTexture("assets/characters/goblin_idle_spritesheet.png"), LoadTexture("assets/characters/goblin_run_spritesheet.png"));
+
+	goblin.setTarget(&knight);
 
     Prop props[2]
     {
@@ -61,6 +69,7 @@ int main()
             }
            
         }
+		goblin.tick(GetFrameTime());
 
         EndDrawing();
     }

@@ -128,12 +128,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BaseCharacter.cpp" />
     <ClCompile Include="src\Character.cpp" />
+    <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Prop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\BaseCharacter.h" />
     <ClInclude Include="include\Character.h" />
+    <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\Prop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
