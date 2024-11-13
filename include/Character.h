@@ -9,9 +9,11 @@ public:
 	~Character();
 
 	virtual void tick(float deltaTime) override;
+	virtual Vector2 getScreenPos() override;
 
 
 private:
-
+	int windowWidth{};
+	int windowHeight{};
 };
 

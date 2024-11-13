@@ -12,15 +12,18 @@ public:
 	Vector2 getWorldPos() const { return worldPos; }
 	void undoMovement();
 	Rectangle getCollisionRec();
+	virtual Vector2 getScreenPos() = 0; // pure virtual function to make this an abstract class
 
 	// protected so that derived classes can access them
 protected:
 	Texture2D texture;
 	Texture2D idle;
 	Texture2D run;
-	Vector2 screenPos{};
+
 	Vector2 worldPos{};
 	Vector2 worldPosLastFrame{};
+	Vector2 velocity{};
+
 	// 1 = facing right, -1 = facing left
 	float rightLeft{ 1.f };
 	// animation variables
