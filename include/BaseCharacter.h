@@ -13,6 +13,10 @@ public:
 	void undoMovement();
 	Rectangle getCollisionRec();
 	virtual Vector2 getScreenPos() = 0; // pure virtual function to make this an abstract class
+	// getters
+	bool getAlive() const { return alive; }
+	// setters
+	void setAlive(bool isAlive) { alive = isAlive; }
 
 	// protected so that derived classes can access them
 protected:
@@ -37,7 +41,7 @@ protected:
 	float height{};
 
 private:
-
+	bool alive{ true };
 };
 
 #endif // BASE_CHARACTER_H

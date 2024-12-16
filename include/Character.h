@@ -11,6 +11,9 @@ public:
 	virtual void tick(float deltaTime) override;
 	virtual Vector2 getScreenPos() override;
 
+	// getters
+	Rectangle getWeaponCollisionRec() const { return weaponCollisionRec; }
+
 
 private:
 	int windowWidth{};

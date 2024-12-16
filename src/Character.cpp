@@ -32,6 +32,7 @@ Character::~Character() {
 
 void Character::tick(float deltaTime)
 {
+	if (!getAlive()) return;
 
 	if (IsKeyDown(KEY_A)) velocity.x -= 1.0f;
 	if (IsKeyDown(KEY_D)) velocity.x += 1.0f;
@@ -51,7 +52,8 @@ void Character::tick(float deltaTime)
 			weapon.width* scale,
 			weapon.height* scale
 		};
-		rotation = 35.f;
+
+		IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? rotation = 35.f : rotation = 0.f;
 	}
 	else {
 		origin = { weapon.width * scale, weapon.height * scale };
@@ -62,7 +64,8 @@ void Character::tick(float deltaTime)
 		weapon.width * scale,
 		weapon.height * scale
 		};
-		rotation = -35.f;
+
+		IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? rotation = -35.f : rotation = 0.f;
 	}
 	// Draw the sword
 	Rectangle source{ 0.f, 0.f, static_cast<float>(weapon.width) * rightLeft, static_cast<float>(weapon.height) };
