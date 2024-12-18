@@ -8,96 +8,116 @@
 
 int main()
 {
-    constexpr int windowDimensions[2] = {384, 384};
-    InitWindow(windowDimensions[0], windowDimensions[1], "Killerman2035");
+	constexpr int windowDimensions[2] = {384, 384};
+	InitWindow(windowDimensions[0], windowDimensions[1], "Killerman2035");
 
-    // Load the map texture
-    Texture2D map = LoadTexture("assets/nature_tileset/Map1_1.png");
-    Vector2 mapPosition = {0.0f, 0.0f};
-    const float mapScale{ 4.0f };
+	// Load the map texture
+	Texture2D map = LoadTexture("assets/nature_tileset/Map1_1.png");
+	Vector2 mapPosition = {0.0f, 0.0f};
+	const float mapScale{4.0f};
 
-    Character knight(windowDimensions);
+	Character knight(windowDimensions);
 
-    Enemy goblin(Vector2{}, LoadTexture("assets/characters/goblin_idle_spritesheet.png"), LoadTexture("assets/characters/goblin_run_spritesheet.png"));
+	Enemy goblin{
+		Vector2{800.f, 300.f},
+		LoadTexture("assets/characters/goblin_idle_spritesheet.png"),
+		LoadTexture("assets/characters/goblin_run_spritesheet.png")
+	};
 
-	goblin.setTarget(&knight);
+	Enemy slime{
+		Vector2{500.f, 700.f},
+		LoadTexture("assets/characters/slime_idle_spritesheet.png"),
+		LoadTexture("assets/characters/slime_run_spritesheet.png")
+	};
 
-    Prop props[2]
-    {
-        Prop{Vector2{600.f, 300.f}, LoadTexture("assets/nature_tileset/Rock.png")},
-        Prop{Vector2{400.f, 500.f}, LoadTexture("assets/nature_tileset/Log.png")}
-    };
+	Enemy* enemies[] = {&goblin, &slime};
 
-    SetTargetFPS(60);
-    // Main game loop
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
+	for (auto enemy : enemies)
+	{
+		enemy->setTarget(&knight);
+	}
 
-        mapPosition = Vector2Scale(knight.getWorldPos(), -1.f);
+	Prop props[2]
+	{
+		Prop{Vector2{600.f, 300.f}, LoadTexture("assets/nature_tileset/Rock.png")},
+		Prop{Vector2{400.f, 500.f}, LoadTexture("assets/nature_tileset/Log.png")}
+	};
 
-        // Draw the map
-        DrawTextureEx(map, mapPosition, 0, mapScale, WHITE);
+	SetTargetFPS(60);
+	// Main game loop
+	while (!WindowShouldClose())
+	{
+		BeginDrawing();
+		ClearBackground(RAYWHITE);
+
+		mapPosition = Vector2Scale(knight.getWorldPos(), -1.f);
+
+		// Draw the map
+		DrawTextureEx(map, mapPosition, 0, mapScale, WHITE);
 
 
-    	// TODO refactor into functions
+		// TODO refactor into functions
 
-         // Draw the props
-        for(auto prop : props)
-        {
-            prop.Render(knight.getWorldPos());
-        }
-        // Update and draw the knight
-        knight.tick(GetFrameTime());
+		// Draw the props
+		for (auto prop : props)
+		{
+			prop.Render(knight.getWorldPos());
+		}
+		// Update and draw the knight
+		knight.tick(GetFrameTime());
 
-        // check map bounds
-        if (knight.getWorldPos().x < 0.f ||
-            knight.getWorldPos().y <0.f ||
-            knight.getWorldPos().x + windowDimensions[0] > map.width * mapScale ||
-            knight.getWorldPos().y + windowDimensions[1] > map.height * mapScale )
-        {
-            knight.undoMovement();
-        }
+		// check map bounds
+		if (knight.getWorldPos().x < 0.f ||
+			knight.getWorldPos().y < 0.f ||
+			knight.getWorldPos().x + windowDimensions[0] > map.width * mapScale ||
+			knight.getWorldPos().y + windowDimensions[1] > map.height * mapScale)
+		{
+			knight.undoMovement();
+		}
 
-        // Check prop collisions
-        for (auto prop : props)
-        {
-            if (CheckCollisionRecs(prop.getCollisionRec(knight.getWorldPos()), knight.getCollisionRec()))
-            {
-                knight.undoMovement();
-            }
-           
-        }
+		// Check prop collisions
+		for (auto prop : props)
+		{
+			if (CheckCollisionRecs(prop.getCollisionRec(knight.getWorldPos()), knight.getCollisionRec()))
+			{
+				knight.undoMovement();
+			}
+		}
 
-        if (!knight.getAlive())
-        {
+		if (!knight.getAlive())
+		{
 			DrawText("Game Over", 55.f, 45.f, 40, RED);
 			EndDrawing();
-            continue;
-        }
-        else
-        {
-            std::string knightsHealth = "Health: ";
-            knightsHealth.append(std::to_string(knight.getHealth()), 0, 5);
+			continue;
+		}
+		else
+		{
+			std::string knightsHealth = "Health: ";
+			knightsHealth.append(std::to_string(knight.getHealth()), 0, 5);
 			DrawText(knightsHealth.c_str(), 55.f, 45.f, 40, RED);
-        }
-		goblin.tick(GetFrameTime());
+		}
+		for (auto enemy : enemies)
+		{
+			enemy->tick(GetFrameTime());
+		}
 
 
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
-			if (CheckCollisionRecs(goblin.getCollisionRec(), knight.getWeaponCollisionRec()))
+			for (auto enemy : enemies)
 			{
-				goblin.setAlive(false);
+				if (CheckCollisionRecs(enemy->getCollisionRec(), knight.getWeaponCollisionRec()))
+				{
+					enemy->setAlive(false);
+				}
 			}
 		}
 
-        EndDrawing();
-    }
+		EndDrawing();
+	}
 
-    UnloadTexture(map);
-    CloseWindow();
+	UnloadTexture(map);
+	CloseWindow();
 
-    return 0;
+	return 0;
 }
