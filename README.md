@@ -59,7 +59,7 @@ The original tutorial project can be found [here](https://gitlab.com/GameDevTV/C
 2. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/JesseSipari/Killerman2035.git
+   git clone https://github.com/JesseSipari/top-down-adventure.git
    ```
 
 3. **Navigate to the Project Directory**
