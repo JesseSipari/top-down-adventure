@@ -4,7 +4,7 @@
 
 This project was developed as part of the [C++ Fundamentals: Game Programming For Beginners](https://www.udemy.com/course/cpp-fundamentals/) course by [GameDev.tv](https://www.gamedev.tv/) and [Stephen Ulibarri](https://www.udemy.com/user/stephen-ulibarri-3/).
 
-**Killerman2035** is a top-down action-adventure game where players wield a sword to battle different enemies. The project demonstrates fundamental C++ programming skills and game development techniques using the Raylib library.
+**top-down-adventure** is a top-down action-adventure game where players wield a sword to battle different enemies. The project demonstrates fundamental C++ programming skills and game development techniques using the Raylib library.
 
 The original tutorial project can be found [here](https://gitlab.com/GameDevTV/CPPCourse/top-down-section).
 
@@ -12,7 +12,7 @@ The original tutorial project can be found [here](https://gitlab.com/GameDevTV/C
 
 ## Table of Contents
 
-- [Killerman2035](#killerman2035)
+- [top-down-adventure](#killerman2035)
   - [About This Project](#about-this-project)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
